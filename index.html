@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para mi pedacito de cielo 🌻</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #fff8dc, #ffe4b5);
+      text-align: center;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    .container {
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      color: #e6ac00;
+    }
+
+    p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: 20px auto;
+      line-height: 1.6;
+    }
+
+    .flower {
+      font-size: 80px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 1em;
+      border: none;
+      border-radius: 25px;
+      background-color: #ffcc00;
+      color: #333;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #ffdb4d;
+    }
+
+    .hidden-message {
+      display: none;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #cc8800;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .gallery img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.1);
+    }
+
+    .heart {
+      position: fixed;
+      color: red;
+      animation: floatUp 5s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+
+    .special {
+      font-weight: bold;
+      color: #cc8800;
+      font-size: 1.3em;
+    }
+  
+    .sparkle {
+      position: fixed;
+      top: -10px;
+      animation: fall 6s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="flower">🌻</div>
+
+    <h1>Feliz Día de las Flores Amarillas mi principito 💛</h1>
+
+    <p>
+      Hoy quiero regalarte algo especial, aunque sea sencillo. No obstante, muy pronto te sorprenderé.
+      Así como estas flores, quiero que nuestro amor siempre sea brillante, cálido y lleno de vida.
+    </p>
+
+    <p>
+      Gracias por estar conmigo, por hacerme sonreír y por ser una parte tan importante de mi vida.
+      Te amo muchísimo mi pedacito de cielo 💛
+    </p>
+
+    <button onclick="mostrarMensaje()">Haz clic aquí 🙈</button>
+
+    <p class="hidden-message" id="mensaje">
+      Eres mi persona favorita en todo el mundo, siempre recuerde que lo amo y primero Dios tengamos un futuro próspero 🌎💛
+    </p>
+
+    <h2> Cómo no enamorarme de este príncipe 🙈</h2>
+
+    <div class="gallery">
+      <img src="https://i.postimg.cc/cJYktQ9N/Whats-App-Image-2026-03-21-at-12-23-04-PM.jpg" alt="foto 1">
+      <img src="https://i.postimg.cc/QML0DFXQ/Whats-App-Image-2026-03-16-at-8-20-23-PM.jpg" alt="foto 2">
+      <img src="https://i.postimg.cc/mrGNqKwy/Whats-App-Image-2026-03-09-at-6-30-47-PM.jpg" alt="foto 3">
+    </div>
+
+    <button onclick="cambiarFrase()">Lo que siento cuando te veo 💖</button>
+
+    <p class="special" id="frase">
+      Cuando te veo, mi mundo se ilumina, torna color, sonrío a la vida desde que llegaste. Simplemente te amo. ✨
+    </p>
+
+  </div>
+
+  <script>
+    function mostrarMensaje() {
+      document.getElementById('mensaje').style.display = 'block';
+    }
+
+    const frases = [
+      "Cuando te veo, mi mundo se ilumina ✨",
+      "Cuando te veo, siento paz 💛",
+      "Cuando te veo, soy la persona más feliz 🥺",
+      "Cuando te veo, todo vale la pena 💖",
+      "Cuando te veo, me enamoro más de ti 🌻"
+    ];
+
+    let index = 0;
+
+    function cambiarFrase() {
+      index = (index + 1) % frases.length;
+      document.getElementById('frase').innerText = frases[index];
+    }
+
+    function crearCorazones() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerText = '💛';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(crearCorazones, 500);
+
+    function crearBrillitos() {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+
+      const simbolos = ['✨','💛','🌟'];
+      sparkle.innerText = simbolos[Math.floor(Math.random() * simbolos.length)];
+
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.fontSize = Math.random() * 15 + 10 + 'px';
+      sparkle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+
+      document.body.appendChild(sparkle);
+
+      setTimeout(() => {
+        sparkle.remove();
+      }, 6000);
+    }
+
+    setInterval(crearBrillitos, 300);
+  </script>
+
+</body>
+</html>
